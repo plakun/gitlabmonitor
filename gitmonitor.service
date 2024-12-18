@@ -1,0 +1,18 @@
+[Unit]
+Description=Gitlab puller
+Documentation=None
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=gitmonitor
+Group=gitmonitor
+Restart=always
+MemoryMax=200M
+WorkingDirectory=/opt/gitmonitor
+ExecStart=/usr/bin/python3 /opt/gitmonitor/gitmonitor.py
+RestartSec=10sec
+ReadWriteDirectories=/opt/gitmonitor
+
+[Install]
+WantedBy=multi-user.target
